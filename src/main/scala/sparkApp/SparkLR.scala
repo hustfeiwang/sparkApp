@@ -20,7 +20,7 @@ object SparkLR {
       System.exit(1)
     }
 
-    val sparkConf = new SparkConf().setAppName(args(4)).setMaster("local")
+    val sparkConf = new SparkConf().setAppName(args(4))
     val sc = new SparkContext(sparkConf)
     val length = args(3).toInt
     val numPartitions = args(1).toInt

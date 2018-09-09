@@ -2,41 +2,52 @@ package streamingApp
 import java.util.HashMap
 
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
+import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.SparkConf
-import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming._
-import org.apache.spark.streaming.kafka._
+import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
+import org.apache.spark.streaming.kafka010.KafkaUtils
+import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
 
 /**
   * Consumes messages from one or more topics in Kafka and does wordcount.
-  * Usage: KafkaWordCount <zkQuorum> <group> <topics> <numThreads>
-  *   <zkQuorum> is a list of one or more zookeeper servers that make quorum
+  * Usage: KafkaWordCount <bootstraps> <group> <topics>
+  *   <bootstraps> is a list of one or more bootStrap servers
   *   <group> is the name of kafka consumer group
   *   <topics> is a list of one or more kafka topics to consume from
-  *   <numThreads> is the number of threads the kafka consumer should use
   *
   * Example:
   *    `$ bin/run-example \
-  *      org.apache.spark.examples.streaming.KafkaWordCount zoo01,zoo02,zoo03 \
-  *      my-consumer-group topic1,topic2 1`
+  *      org.apache.spark.examples.streaming.KafkaCC bootStrap1,bootStrap2 \
+  *      my-consumer-group topic1,topic2 `
   */
 object KafkaCC {
   def main(args: Array[String]) {
-    if (args.length < 4) {
-      System.err.println("Usage: KafkaWordCount <zkQuorum> <group> <topics> <numThreads>")
+    if (args.length < 3) {
+      System.err.println("Usage: KafkaWordCount <bootstraps> <group> <topics> ")
       System.exit(1)
     }
 
-
-    val Array(zkQuorum, group, topics, numThreads) = args
-    val sparkConf = new SparkConf().setAppName("KafkaCC")
+    val Array(bootStraps, group, topics) = args
+    val sparkConf = new SparkConf().setAppName("KafkaWordCount")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     ssc.checkpoint("checkpoint")
 
-    val topicMap = topics.split(",").map((_, numThreads.toInt)).toMap
-    // 取到数据的value部分，是个字符串，里面是两个整数
-    val lines = KafkaUtils.createStream(ssc, zkQuorum, group, topicMap).map(_._2)
-      .flatMap( s=> s.split("\n"))
+    val kafkaParams = Map[String, Object](
+      "bootstrap.servers" -> bootStraps,
+      "key.deserializer" -> classOf[StringDeserializer],
+      "value.deserializer" -> classOf[StringDeserializer],
+      "group.id" -> group,
+      "auto.offset.reset" -> "latest",
+      "enable.auto.commit" -> (false: java.lang.Boolean)
+    )
+
+    val topicArray = topics.split(",")
+    val lines = KafkaUtils.createDirectStream[String, String](
+      ssc,
+      PreferConsistent,
+      Subscribe[String, String] (topicArray, kafkaParams)
+    ).map(_.value()).flatMap(s=> s.split("\n"))
 
     val edges = lines.filter(s=> s.split("\\s+").length==2).map{ s=>
       val parts = s.split("\\s+")

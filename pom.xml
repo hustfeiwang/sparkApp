@@ -60,20 +60,11 @@
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-kafka-0-8_2.11</artifactId>
-            <version>${spark.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming-kafka-0-10-assembly_2.11</artifactId>
             <version>${spark.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-kafka-0-8-assembly_2.11</artifactId>
-            <version>${spark.version}</version>
-        </dependency>
+
 
         <!--这些是scala依赖-->
         <dependency>

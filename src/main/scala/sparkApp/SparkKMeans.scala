@@ -51,7 +51,7 @@ object SparkKMeans {
 
     showWarning()
 
-    val sparkConf = new SparkConf().setAppName("SparkKMeans").setMaster("local")
+    val sparkConf = new SparkConf().setAppName("SparkKMeans")
     val sc = new SparkContext(sparkConf)
     val lines = sc.textFile(args(0))
     val data = lines.map(parseVector _).cache()

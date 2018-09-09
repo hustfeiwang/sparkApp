@@ -1,42 +1,73 @@
 package streamingApp
 
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// scalastyle:off println
 import java.util.HashMap
 
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
-
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming._
-import org.apache.spark.streaming.kafka._
-
+import org.apache.spark.streaming.kafka010.KafkaUtils
+import org.apache.kafka.clients.consumer.ConsumerRecord
+import org.apache.kafka.common.serialization.StringDeserializer
+import org.apache.spark.streaming.kafka010._
+import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
+import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 /**
   * Consumes messages from one or more topics in Kafka and does wordcount.
-  * Usage: KafkaWordCount <zkQuorum> <group> <topics> <numThreads>
-  *   <zkQuorum> is a list of one or more zookeeper servers that make quorum
+  * Usage: KafkaWordCount <bootstraps> <group> <topics>
+  *   <bootstraps> is a list of one or more bootStrap servers
   *   <group> is the name of kafka consumer group
   *   <topics> is a list of one or more kafka topics to consume from
-  *   <numThreads> is the number of threads the kafka consumer should use
   *
   * Example:
   *    `$ bin/run-example \
-  *      org.apache.spark.examples.streaming.KafkaWordCount zoo01,zoo02,zoo03 \
-  *      my-consumer-group topic1,topic2 1`
+  *      org.apache.spark.examples.streaming.KafkaPR bootStrap1,bootStrap2 \
+  *      my-consumer-group topic1,topic2 `
   */
 object KafkaPR {
   def main(args: Array[String]) {
-    if (args.length < 4) {
-      System.err.println("Usage: KafkaWordCount <zkQuorum> <group> <topics> <numThreads>")
+    if (args.length < 3) {
+      System.err.println("Usage: KafkaWordCount <bootstraps> <group> <topics> ")
       System.exit(1)
     }
 
-
-    val Array(zkQuorum, group, topics, numThreads) = args
-    val sparkConf = new SparkConf().setAppName("KafkaPR")
+    val Array(bootStraps, group, topics) = args
+    val sparkConf = new SparkConf().setAppName("KafkaWordCount")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     ssc.checkpoint("checkpoint")
 
-    val topicMap = topics.split(",").map((_, numThreads.toInt)).toMap
-    val lines = KafkaUtils.createStream(ssc, zkQuorum, group, topicMap).map(_._2)
-        .flatMap(s => s.split("\n"))
+    val kafkaParams = Map[String, Object](
+      "bootstrap.servers" -> bootStraps,
+      "key.deserializer" -> classOf[StringDeserializer],
+      "value.deserializer" -> classOf[StringDeserializer],
+      "group.id" -> group,
+      "auto.offset.reset" -> "latest",
+      "enable.auto.commit" -> (false: java.lang.Boolean)
+    )
+
+    val topicArray = topics.split(",")
+    val lines = KafkaUtils.createDirectStream[String, String](
+      ssc,
+      PreferConsistent,
+      Subscribe[String, String] (topicArray, kafkaParams)
+    ).map(_.value()).flatMap(s=> s.split("\n"))
 
     val links = lines.filter(s=> s.split("\\s+").length==2).map{ s=>
       val parts = s.split("\\s+")

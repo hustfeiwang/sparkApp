@@ -11,7 +11,7 @@ object SparkPR {
       System.exit(1)
     }
 
-    val sparkConf = new SparkConf().setAppName("PR").setMaster("local")
+    val sparkConf = new SparkConf().setAppName("PR")
     val iters = if (args.length > 1) args(1).toInt else 10
     val ctx = new SparkContext(sparkConf)
     val lines = ctx.textFile(args(0))
