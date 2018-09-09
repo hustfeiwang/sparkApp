@@ -55,7 +55,7 @@ object KafkaKMeans {
         |for more conventional use.
       """.stripMargin)
     val Array(bootStraps, group, topics) = args
-    val sparkConf = new SparkConf().setAppName("KafkaWordCount")
+    val sparkConf = new SparkConf().setAppName("KafkaKMeans")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     ssc.checkpoint("checkpoint")
 

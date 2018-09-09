@@ -8,18 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8877b0a3-b55b-4d9c-a22b-45da39a26a7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sparkApp/SparkKMeans.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sparkApp/SparkKMeans.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sparkApp/SparkLR.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sparkApp/SparkLR.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sparkApp/SparkPR.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sparkApp/SparkPR.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sparkApp/SparkWC.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sparkApp/SparkWC.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/DirectWordCount.scala" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/TimerWordCount.scala" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,13 +35,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="scala" value="3066" />
+          <entry key="scala" value="3078" />
           <entry key="xml" value="529" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Scala" value="3066" />
+          <entry key="Scala" value="3078" />
           <entry key="XML" value="529" />
         </counts>
       </usages-collector>
@@ -62,7 +54,7 @@
           <entry key="part-00001" value="2" />
           <entry key="scala" value="66" />
           <entry key="txt" value="6" />
-          <entry key="xml" value="3" />
+          <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -72,7 +64,7 @@
           <entry key="JAVA" value="1" />
           <entry key="PLAIN_TEXT" value="10" />
           <entry key="Scala" value="66" />
-          <entry key="XML" value="3" />
+          <entry key="XML" value="4" />
         </counts>
       </usages-collector>
     </session>
@@ -80,19 +72,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="-1506">
+              <caret line="62" column="45" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/0.10.2.1/kafka-clients-0.10.2.1.jar!/org/apache/kafka/clients/producer/KafkaProducer.class">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
+            <state relative-caret-position="169">
+              <caret line="81" column="7" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+              <folding>
+                <element signature="e#850#874#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+            <state relative-caret-position="293">
+              <caret line="57" column="59" selection-start-line="57" selection-start-column="59" selection-end-line="57" selection-end-column="59" />
               <folding>
                 <element signature="e#22#46#0" expanded="true" />
               </folding>
@@ -112,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+            <state relative-caret-position="525">
+              <caret line="35" column="42" lean-forward="true" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
               <folding>
                 <element signature="e#21#45#0" expanded="true" />
               </folding>
@@ -121,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/sparkApp/SparkWC.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+            <state relative-caret-position="210">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -134,7 +129,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/sparkApp/SparkPR.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -160,8 +155,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
+            <state relative-caret-position="332">
+              <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
               <folding>
                 <element signature="e#22#56#0" expanded="true" />
               </folding>
@@ -169,11 +164,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+            <state relative-caret-position="370">
+              <caret line="87" column="3" lean-forward="true" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
               <folding>
                 <element signature="e#850#874#0" expanded="true" />
               </folding>
@@ -217,14 +212,14 @@
         <option value="$PROJECT_DIR$/src/main/scala/streamingApp/TimerWordCount.scala" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/sparkApp/SparkLR.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/sparkApp/SparkKMeans.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/sparkApp/SparkPR.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/sparkApp/SparkWC.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala" />
       </list>
     </option>
   </component>
@@ -298,14 +293,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
               <item name="streamingApp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -353,12 +340,6 @@
               <item name="streamingApp" type="462c0819:PsiDirectoryNode" />
               <item name="KafkaWordCount.scala" type="6117b065:FileNode" />
             </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -367,7 +348,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="pair&#9;FILE&#9;jar:///Users/bbw/.m2/repository/org/apache/spark/spark-core_2.11/2.1.2/spark-core_2.11-2.1.2-sources.jar!/org/apache/spark/rdd/PairRDDFunctions.scala&#10;PairFun&#9;null&#9;null&#10;RDD&#9;null&#9;null&#10;kafkaz&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536504510649" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536509737529" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32176656" />
@@ -815,13 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="62" column="45" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/0.10.2.1/kafka-clients-0.10.2.1.jar!/org/apache/kafka/clients/producer/KafkaProducer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -835,53 +809,6 @@
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="25" selection-end-column="32" />
           <folding>
             <element signature="e#21#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
-          <folding>
-            <element signature="e#850#874#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
-          <folding>
-            <element signature="e#22#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
-          <folding>
-            <element signature="e#22#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding>
-            <element signature="e#21#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -903,14 +830,71 @@
     <entry file="file://$PROJECT_DIR$/src/main/scala/sparkApp/SparkPR.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/sparkApp/SparkWC.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1506">
+          <caret line="62" column="45" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="81" column="7" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+          <folding>
+            <element signature="e#850#874#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+          <folding>
+            <element signature="e#22#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="57" column="59" selection-start-line="57" selection-start-column="59" selection-end-line="57" selection-end-column="59" />
+          <folding>
+            <element signature="e#22#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="42" lean-forward="true" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
+          <folding>
+            <element signature="e#21#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="87" column="3" lean-forward="true" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
+          <folding>
+            <element signature="e#850#874#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

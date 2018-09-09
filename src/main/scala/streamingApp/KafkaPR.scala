@@ -49,7 +49,7 @@ object KafkaPR {
     }
 
     val Array(bootStraps, group, topics) = args
-    val sparkConf = new SparkConf().setAppName("KafkaWordCount")
+    val sparkConf = new SparkConf().setAppName("KafkaPR")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     ssc.checkpoint("checkpoint")
 
