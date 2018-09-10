@@ -6,14 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8877b0a3-b55b-4d9c-a22b-45da39a26a7a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaKMeans.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaLR.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaPR.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/streamingApp/KafkaWordCount.scala" afterDir="false" />
-    </list>
+    <list default="true" id="8877b0a3-b55b-4d9c-a22b-45da39a26a7a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -108,7 +101,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
+            <state relative-caret-position="108">
               <caret line="108" column="25" lean-forward="true" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
               <folding>
                 <element signature="e#21#45#0" expanded="true" />
@@ -269,82 +262,6 @@
               <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="streamingApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="streamingApp" type="462c0819:PsiDirectoryNode" />
-              <item name="KafkaCC.scala" type="6117b065:FileNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="streamingApp" type="462c0819:PsiDirectoryNode" />
-              <item name="KafkaKMeans.scala" type="6117b065:FileNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="streamingApp" type="462c0819:PsiDirectoryNode" />
-              <item name="KafkaLR.scala" type="6117b065:FileNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="streamingApp" type="462c0819:PsiDirectoryNode" />
-              <item name="KafkaPR.scala" type="6117b065:FileNode" />
-            </path>
-            <path>
-              <item name="sparkApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sparkApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="streamingApp" type="462c0819:PsiDirectoryNode" />
-              <item name="KafkaWordCount.scala" type="6117b065:FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -353,7 +270,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="pair&#9;FILE&#9;jar:///Users/bbw/.m2/repository/org/apache/spark/spark-core_2.11/2.1.2/spark-core_2.11-2.1.2-sources.jar!/org/apache/spark/rdd/PairRDDFunctions.scala&#10;PairFun&#9;null&#9;null&#10;RDD&#9;null&#9;null&#10;kafkaz&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536563150381" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536563226028" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32176656" />
@@ -570,9 +487,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26009694" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26009694" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -588,7 +504,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="JProfiler" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.44554454" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.44554454" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32956153" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -936,7 +852,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/streamingApp/KafkaCC.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
+        <state relative-caret-position="108">
           <caret line="108" column="25" lean-forward="true" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
           <folding>
             <element signature="e#21#45#0" expanded="true" />
