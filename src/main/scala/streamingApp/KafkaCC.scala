@@ -11,10 +11,11 @@ import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
 
 /**
   * Consumes messages from one or more topics in Kafka and does wordcount.
-  * Usage: KafkaWordCount <bootstraps> <group> <topics>
+  * Usage: KafkaCC <bootstraps> <group> <topics> <timeOut>
   *   <bootstraps> is a list of one or more bootStrap servers
   *   <group> is the name of kafka consumer group
   *   <topics> is a list of one or more kafka topics to consume from
+  *   <timeOut> is the time to terminated the streaming app
   *
   * Example:
   *    `$ bin/run-example \
@@ -23,12 +24,12 @@ import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
   */
 object KafkaCC {
   def main(args: Array[String]) {
-    if (args.length < 3) {
-      System.err.println("Usage: KafkaWordCount <bootstraps> <group> <topics> ")
+    if (args.length < 4) {
+      System.err.println("Usage: KafkaWordCount <bootstraps> <group> <topics> <timeOut> ")
       System.exit(1)
     }
 
-    val Array(bootStraps, group, topics) = args
+    val Array(bootStraps, group, topics, timeOut) = args
     val sparkConf = new SparkConf().setAppName("KafkaCC")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     ssc.checkpoint("checkpoint")
@@ -49,13 +50,12 @@ object KafkaCC {
       Subscribe[String, String] (topicArray, kafkaParams)
     ).map(_.value()).flatMap(s=> s.split("\n"))
 
-    val edges = lines.filter(s=> s.split("\\s+").length==2).map{ s=>
+    val edges = lines.filter(_.trim!="").map(_.trim).map{ s=>
       val parts = s.split("\\s+")
       (parts(0).toInt, parts(1).toInt)
     }
 
     val g = edges.groupByKey()
-//    g.persist(StorageLevel.MEMORY_AND_DISK)
     var messages = g.map(eMsg => {
       (eMsg._1, eMsg._1)
     })
@@ -69,7 +69,8 @@ object KafkaCC {
     messages.print()
 
     ssc.start()
-    ssc.awaitTermination()
+    ssc.awaitTerminationOrTimeout(timeOut.toInt * 1000)
+    ssc.stop()
   }
 }
 
@@ -77,13 +78,13 @@ object KafkaCC {
 object KafkaCCProducer {
 
   def main(args: Array[String]) {
-    if (args.length < 4) {
+    if (args.length < 5) {
       System.err.println("Usage: KafkaCCProducer <metadataBrokerList> <topic> " +
-        "<messagesPerSec> <wordsPerMessage>")
+        "<messagesPerSec> <wordsPerMessage> <lifeTime>")
       System.exit(1)
     }
 
-    val Array(brokers, topic, messagesPerSec, wordsPerMessage) = args
+    val Array(brokers, topic, messagesPerSec, wordsPerMessage, lifeTime) = args
 
     // Zookeeper connection properties
     val props = new HashMap[String, Object]()
@@ -95,8 +96,9 @@ object KafkaCCProducer {
 
     val producer = new KafkaProducer[String, String](props)
 
+    var lastTime = lifeTime.toInt
     // Send some messages
-    while(true) {
+    while(lastTime > 0) {
       (1 to messagesPerSec.toInt).foreach { messageNum =>
         val str = (1 to wordsPerMessage.toInt).map(x => {
           var r = ""
@@ -111,7 +113,9 @@ object KafkaCCProducer {
       }
 
       Thread.sleep(1000)
+      lastTime -=1
     }
+    producer.close()
   }
 
 }

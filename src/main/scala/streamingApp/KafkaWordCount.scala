@@ -29,24 +29,25 @@ import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
 import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 /**
   * Consumes messages from one or more topics in Kafka and does wordcount.
-  * Usage: KafkaWordCount <bootstraps> <group> <topics>
+  * Usage: KafkaWordCount <bootstraps> <group> <topics> <timeOut>
   *   <bootstraps> is a list of one or more bootStrap servers
   *   <group> is the name of kafka consumer group
   *   <topics> is a list of one or more kafka topics to consume from
+  *   <timeOut> is the time to terminated the streaming app
   *
   * Example:
   *    `$ bin/run-example \
   *      org.apache.spark.examples.streaming.KafkaWordCount bootStrap1,bootStrap2 \
-  *      my-consumer-group topic1,topic2 `
+  *      my-consumer-group topic1,topic2 timeOut `
   */
 object KafkaWordCount {
   def main(args: Array[String]) {
-    if (args.length < 3) {
-      System.err.println("Usage: KafkaWordCount <bootstraps> <group> <topics> ")
+    if (args.length < 4 ) {
+      System.err.println("Usage: KafkaWordCount <bootstraps> <group> <topics> <timeOut(s)> ")
       System.exit(1)
     }
 
-    val Array(bootStraps, group, topics) = args
+    val Array(bootStraps, group, topics, timeOut) = args
     val sparkConf = new SparkConf().setAppName("KafkaWordCount")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     ssc.checkpoint("checkpoint")
@@ -67,14 +68,14 @@ object KafkaWordCount {
       Subscribe[String, String] (topicArray, kafkaParams)
     ).map(_.value())
 
-//    val lines = KafkaUtils.createStream(ssc, zkQuorum, group, topicMap).map(_._2)
     val words = lines.flatMap(_.split(" "))
     val wordCounts = words.map(x => (x, 1L))
       .reduceByKeyAndWindow(_ + _, _ - _, Minutes(10), Seconds(2), 2)
     wordCounts.print()
 
     ssc.start()
-    ssc.awaitTermination()
+    ssc.awaitTerminationOrTimeout(timeOut.toInt*1000)
+    ssc.stop()
   }
 }
 
@@ -82,13 +83,13 @@ object KafkaWordCount {
 object KafkaWordCountProducer {
 
   def main(args: Array[String]) {
-    if (args.length < 4) {
+    if (args.length < 5 ) {
       System.err.println("Usage: KafkaWordCountProducer <metadataBrokerList> <topic> " +
-        "<messagesPerSec> <wordsPerMessage>")
+        "<messagesPerSec> <wordsPerMessage> <lifeTime> ")
       System.exit(1)
     }
 
-    val Array(brokers, topic, messagesPerSec, wordsPerMessage) = args
+    val Array(brokers, topic, messagesPerSec, wordsPerMessage, lifeTime) = args
 
     // Zookeeper connection properties
     val props = new HashMap[String, Object]()
@@ -100,8 +101,9 @@ object KafkaWordCountProducer {
 
     val producer = new KafkaProducer[String, String](props)
 
+    var lastTime = lifeTime.toInt
     // Send some messages
-    while(true) {
+    while(lastTime >0) {
       (1 to messagesPerSec.toInt).foreach { messageNum =>
         val str = (1 to wordsPerMessage.toInt).map(x => scala.util.Random.nextInt(10).toString)
           .mkString(" ")
@@ -111,7 +113,9 @@ object KafkaWordCountProducer {
       }
 
       Thread.sleep(1000)
+      lastTime -= 1
     }
+    producer.close()
   }
 
 }

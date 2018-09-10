@@ -16,10 +16,11 @@ import breeze.linalg.Vector
 import breeze.linalg.DenseVector
 /**
   * Consumes messages from one or more topics in Kafka and does wordcount.
-  * Usage: KafkaWordCount <bootstraps> <group> <topics>
+  * Usage: KafkaLR <bootstraps> <group> <topics> <timeOut>
   *   <bootstraps> is a list of one or more bootStrap servers
   *   <group> is the name of kafka consumer group
   *   <topics> is a list of one or more kafka topics to consume from
+  *   <timeOut> is the time to terminated the streaming app
   *
   * Example:
   *    `$ bin/run-example \
@@ -31,12 +32,12 @@ object KafkaLR {
   val rand = new Random(42)
 
   def main(args: Array[String]) {
-    if (args.length < 3) {
-      System.err.println("Usage: KafkaWordCount <bootstraps> <group> <topics> ")
+    if (args.length < 4) {
+      System.err.println("Usage: KafkaWordCount <bootstraps> <group> <topics> <timeOut> ")
       System.exit(1)
     }
 
-    val Array(bootStraps, group, topics) = args
+    val Array(bootStraps, group, topics, timeOut) = args
     val sparkConf = new SparkConf().setAppName("KafkaLR")
     val ssc = new StreamingContext(sparkConf, Seconds(2))
     ssc.checkpoint("checkpoint")
@@ -57,8 +58,8 @@ object KafkaLR {
       Subscribe[String, String] (topicArray, kafkaParams)
     ).map(_.value()).flatMap(s=> s.split("\n"))
 
-    val points = lines.filter(s=> s.split("\\s+").length==11).map{line =>
-      val parts = line.split(" ")
+    val points = lines.filter(_.trim!="").map(_.trim).map{line =>
+      val parts = line.split("\\s+")
       val y = parts(0).toDouble
       val data = new Array[Double](parts.length-1)
       for(i <- 1 until parts.length){
@@ -77,10 +78,12 @@ object KafkaLR {
         p.x * (1 / (1 + Math.exp(-p.y * (w.dot(p.x)))) - 1) * p.y
       }.reduce(_ + _)
 //      w -= gradient
+      gradient.print()
     }
     println("Final w: " + w)
     ssc.start()
-    ssc.awaitTermination()
+    ssc.awaitTerminationOrTimeout(timeOut.toInt * 1000)
+    ssc.stop()
   }
 }
 
@@ -88,13 +91,13 @@ object KafkaLR {
 object KafkaLRProducer {
 
   def main(args: Array[String]) {
-    if (args.length < 4) {
+    if (args.length < 5) {
       System.err.println("Usage: KafkaLRProducer <metadataBrokerList> <topic> " +
-        "<messagesPerSec> <wordsPerMessage>")
+        "<messagesPerSec> <wordsPerMessage> <lifeTime> ")
       System.exit(1)
     }
 
-    val Array(brokers, topic, messagesPerSec, wordsPerMessage) = args
+    val Array(brokers, topic, messagesPerSec, wordsPerMessage, lifeTime) = args
 
     // Zookeeper connection properties
     val props = new HashMap[String, Object]()
@@ -106,13 +109,14 @@ object KafkaLRProducer {
 
     val producer = new KafkaProducer[String, String](props)
 
+    var lastTime = lifeTime.toInt
     // Send some messages
-    while(true) {
+    while(lastTime > 0) {
       (1 to messagesPerSec.toInt).foreach { messageNum =>
         val str = (1 to wordsPerMessage.toInt).map(x => {
           var r = "1"
           for(i <- 1 to 10){
-            r += "\t"+ scala.util.Random.nextInt(10000).toString
+            r += "\t"+ scala.util.Random.nextDouble().toString
           }
           r
         }).mkString("\n")
@@ -122,7 +126,9 @@ object KafkaLRProducer {
       }
 
       Thread.sleep(1000)
+      lastTime -=1
     }
+    producer.close()
   }
 
 }
