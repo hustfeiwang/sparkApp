@@ -1,3 +1,7 @@
 out
 target
 checkpoint
+data
+spark-warehouse
+.idea
+.DStore
